@@ -1,485 +1,862 @@
 <!DOCTYPE html><html lang="en" data-scrapbook-source="https://polygon-bridge-chain.github.io/" data-scrapbook-create="20260109134703670" data-scrapbook-title="Sell USDT in Bali"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- SEO / EEAT Meta Tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Polygon Bridge — Secure Cross-Chain Transfers on Polygon Chain</title>
-  <meta name="description" content="Polygon Bridge on Polygon Chain. Learn fees, slippage, MEV protection, exit times, and best practices. Includes Polygon Portal steps and troubleshooting.">
-  <meta name="author" content="Crypto Finance Experts">
-  <link rel="canonical" href="https://polygon-bridge-guide.example.com/">
-  <link rel="icon" type="image/png" href="polygon-logo-png_seeklogo-527156.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Polygon Bridge — Fees, Time, Routes, Limits, Slippage & Troubleshooting Guide (2026)</title>
+  <meta name="description" content="Polygon Bridge (2026): how bridging works, best routes, fees, confirmation time, limits, slippage, token approvals, security checklist, tracking, and troubleshooting. Includes route ideas, FAQs, and practical safety rules." />
+  <meta name="author" content="Crypto Finance Experts" />
+  <link rel="canonical" href="https://bridge-polygon.example.com/" />
+
+  <link rel="icon" type="image/png" href="polygon-logo-png_seeklogo-527156.png" />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://polygon-bridge-guide.example.com/">
-  <meta property="og:title" content="Polygon Bridge — Secure Cross-Chain Transfers on Polygon Chain">
-  <meta property="og:description" content="How to bridge safely on Polygon Chain: fees, slippage, MEV, exit times, and Polygon Portal steps.">
-  <meta property="og:image" content="cover.png">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://bridge-polygon.example.com/" />
+  <meta property="og:title" content="Polygon Bridge — Fees, Time, Routes, Limits, Slippage & Troubleshooting (2026)" />
+  <meta property="og:description" content="Security-first Polygon Bridge guide: routes, fees, time to arrive, limits, slippage, approvals, tracking, and troubleshooting." />
+  <meta property="og:image" content="poly2.png" />
 
-  <!-- Twitter Card -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://polygon-bridge-guide.example.com/">
-  <meta property="twitter:title" content="Polygon Bridge — Secure Cross-Chain Transfers on Polygon Chain">
-  <meta property="twitter:description" content="Practical guide for Polygon Bridge and Polygon Portal with security notes and KPIs.">
-  <meta property="twitter:image" content="cover.png">
-
-  <!-- Optional schema.org (can be extended as needed) -->
-  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Polygon Bridge — Fees, Time, Routes, Limits, Slippage & Troubleshooting (2026)" />
+  <meta property="twitter:description" content="Practical Polygon Bridge guide: how bridging works, fees, time, limits, best routes, and fixes." />
+  <meta property="twitter:image" content="poly2.png" />
 
   <style>
-    /* =========================
-       THEME (Polygon style)
-       ========================= */
     :root{
-      --primary:#8247E5;            /* Polygon purple */
-      --primary-600:#6f39d8;
-      --primary-700:#5e2fc1;
-      --ink:#1a202c;
-      --muted:#4a5568;
-      --bg:#0b0b13;                 /* dark canvas */
-      --panel:#12121c;              /* cards */
-      --panel-2:#171727;
-      --line:#2a2a3c;
-      --ok:#16a34a;
-      --warn:#f59e0b;
-      --error:#ef4444;
-      --white:#ffffff;
-      --shadow: 0 10px 25px rgba(0,0,0,.25);
-      --radius:14px;
-      --radius-sm:10px;
-      --radius-lg:22px;
-      --gap:1.25rem;
-      --gap-lg:2rem;
+      --bg0:#07060b;
+      --bg1:#0b0a12;
+
+      --ink:#f6f4ff;
+      --muted:#c7c0df;
+      --muted2:#a79fc4;
+
+      --accent:#8b5cf6;
+      --accent2:#a78bfa;
+      --accent3:#6d28d9;
+
+      --line: rgba(255,255,255,.10);
+      --shadow: 0 22px 60px rgba(0,0,0,.45);
+      --shadow2: 0 14px 30px rgba(0,0,0,.40);
+
+      --r: 18px;
+      --r2: 26px;
+      --max: 1180px;
     }
 
-    /* Base */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
       color:var(--muted);
-      background: radial-gradient(1200px 800px at 10% 0%, rgba(130,71,229,.25), transparent 60%),
-                  radial-gradient(900px 600px at 90% 10%, rgba(130,71,229,.18), transparent 60%),
-                  var(--bg);
-      line-height:1.65;
+      background:
+        radial-gradient(900px 600px at 15% -10%, rgba(139,92,246,.45), transparent 55%),
+        radial-gradient(700px 500px at 95% 5%, rgba(167,139,250,.25), transparent 55%),
+        radial-gradient(900px 700px at 55% 120%, rgba(109,40,217,.35), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #07060b);
+      line-height:1.7;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
-    a{color:var(--primary); text-decoration:none}
+
+    a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
-    img{max-width:100%; height:auto; border-radius:var(--radius-sm)}
-    .container{max-width:1100px; margin:0 auto; padding:0 1.25rem}
+    img{max-width:100%; height:auto; display:block}
 
-    h1,h2,h3,h4{color:var(--white); line-height:1.25; margin:0 0 .6rem}
-    h1{font-size:clamp(2rem,4.5vw,3.2rem); font-weight:900; letter-spacing:.2px}
-    h2{font-size:clamp(1.4rem,2.8vw,2rem); margin-top:2.2rem; padding-top:.6rem; border-top:1px solid var(--line)}
-    h3{font-size:clamp(1.05rem,2.2vw,1.3rem); color:#e7e7f5}
+    .container{max-width:var(--max); margin:0 auto; padding:0 22px}
 
-    p,li,td,th{font-size:1rem}
-    .lead{font-size:1.125rem; color:#d7d7ea}
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(14px);
+      background: rgba(7,6,11,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 230px;
+    }
+    .brand img{
+      width:38px; height:38px; border-radius:12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      padding:6px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.35);
+      object-fit:contain;
+    }
+    .brand .t1{color:var(--ink); font-weight:900; letter-spacing:.2px}
+    .brand .t2{font-size:.92rem; color:var(--muted2)}
 
     /* Hero */
-    header.hero{
-      padding: clamp(2rem,6vw,4rem) 0;
-      background:
-        radial-gradient(600px 400px at 20% 20%, rgba(130,71,229,.35), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0) 35%);
-      border-bottom:1px solid var(--line);
+    header.hero{padding: 38px 0 18px}
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius: var(--r2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
-    .hero-grid{
-      display:grid; gap:var(--gap-lg);
-      grid-template-columns:1fr;
-      align-items:center;
+    .card-inner{padding:26px}
+
+    .kicker{
+      display:flex; align-items:center; gap:10px;
+      color: rgba(246,244,255,.86);
+      font-weight:900;
+      letter-spacing:.25px;
+      margin-bottom:10px;
     }
-    .hero-card{
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-      border:1px solid var(--line);
-      border-radius:var(--radius-lg);
-      padding:clamp(1rem,3vw,1.75rem);
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(6px);
+    .kicker .dot{
+      width:10px;height:10px;border-radius:99px;
+      background: linear-gradient(180deg, var(--accent2), var(--accent3));
+      box-shadow: 0 0 0 4px rgba(139,92,246,.18);
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(2.1rem, 4.8vw, 3.4rem);
+      line-height:1.12;
+      color:var(--ink);
+      font-weight: 950;
+      letter-spacing:.2px;
+    }
+
+    .lead{
+      font-size:1.08rem;
+      color: rgba(199,192,223,.95);
+      margin:0 0 14px;
+      max-width: 78ch;
+    }
+
+    /* ONE CTA centered */
+    .cta-row{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:14px;
     }
     .cta{
-      display:inline-block;
-      margin-top:1rem;
-      background:linear-gradient(180deg, var(--primary), var(--primary-700));
-      color:white; padding:.9rem 1.4rem; border-radius:12px;
-      font-weight:700; letter-spacing:.2px;
-      box-shadow:0 6px 16px rgba(130,71,229,.35);
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius: 16px;
+      font-weight: 950;
+      letter-spacing:.2px;
+      color:#0b0812;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 38px rgba(139,92,246,.22);
+      min-width: 260px;
     }
-    .cta:hover{filter:brightness(1.05); text-decoration:none}
-    .cta.secondary{
-      background:transparent; border:1px solid var(--line); color:#eaeafa; margin-left:.75rem;
+    .cta:hover{filter: brightness(1.03); text-decoration:none}
+    .cta svg{opacity:.95}
+
+    /* Keywords moved into a text block (Symbiosis-like “explain then operate”) */
+    .keywords-block{
+      margin-top:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(139,92,246,.14), rgba(255,255,255,.02));
+      padding:14px 14px;
+      border-radius: 16px;
+      color: rgba(246,244,255,.88);
     }
-    .hero-visual{
-      display:none;
+    .keywords-block b{color:var(--ink)}
+    .keywords-block .muted{color: rgba(199,192,223,.92)}
+
+    /* Full-width hero image under the hero card */
+    .hero-media{
+      margin-top:16px;
+      border-radius: var(--r2);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow2);
+    }
+    .hero-media img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .hero-media .cap{
+      padding:12px 14px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color: rgba(167,159,196,.92);
+      font-weight:800;
+      background: rgba(7,6,11,.25);
     }
 
-    /* Steps */
-    section.step-guide{padding: clamp(2rem,6vw,3.5rem) 0}
-    .steps{
-      display:grid; gap:var(--gap);
-      grid-template-columns:1fr;
+    /* Body */
+    main{padding: 18px 0 56px}
+    .grid{display:grid; gap:18px; grid-template-columns: 1fr;}
+
+    .section-title{
+      color: var(--ink);
+      font-weight: 950;
+      letter-spacing:.2px;
+      margin:0 0 10px;
+      font-size: clamp(1.25rem, 2.4vw, 1.75rem);
     }
-    .step{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:1.2rem;
-      transition:transform .2s ease, box-shadow .2s ease;
+    .subtle{margin:0; color: rgba(199,192,223,.92);}
+
+    .toc{
+      padding:18px 20px;
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
     }
-    .step:hover{transform:translateY(-4px); box-shadow:0 10px 20px rgba(0,0,0,.18)}
-    .step .icon{
-      width:54px;height:54px;border-radius:50%;
-      display:inline-grid; place-items:center;
-      background:rgba(130,71,229,.18); margin-bottom:.6rem; color:#c9b6ff
+    .toc strong{color:rgba(246,244,255,.92)}
+    .toc ul{margin:10px 0 0; padding-left: 18px}
+    .toc li{margin:6px 0}
+    .toc a{font-weight:850}
+
+    .note{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(139,92,246,.14), rgba(255,255,255,.02));
+      padding:14px 14px;
+      border-radius: 16px;
+      color: rgba(246,244,255,.88);
+    }
+    .note b{color:var(--ink)}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      overflow:hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    th,td{
+      padding: 12px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      vertical-align:top;
+      font-size: 0.98rem;
+    }
+    th{
+      color: rgba(246,244,255,.92);
+      font-weight: 950;
+      background: rgba(139,92,246,.10);
+    }
+    tr:hover td{background: rgba(255,255,255,.02)}
+
+    /* Route pills (Symbiosis-like “routes” section) */
+    .routes{
+      display:grid;
+      gap:10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top:12px;
+    }
+    .route{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: 16px;
+      padding:12px 12px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+    }
+    .route b{color:rgba(246,244,255,.92)}
+    .route span{color:rgba(167,159,196,.92); font-weight:800}
+    @media (max-width: 820px){
+      .routes{grid-template-columns: 1fr;}
     }
 
-    /* Main content cards & tables */
-    main .card{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:1.25rem;
-      margin:1.25rem 0;
+    /* FAQ */
+    .faq-item{border-top:1px solid rgba(255,255,255,.10); padding:12px 0}
+    .faq-btn{
+      all:unset;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      cursor:pointer;
+      padding: 10px 0;
     }
-    table{width:100%; border-collapse:collapse; overflow:hidden; border-radius:12px}
-    th,td{padding:.9rem; border-bottom:1px solid var(--line)}
-    th{background:var(--panel-2); color:#f0f0ff; text-align:left}
-    tr.highlight{background:rgba(130,71,229,.08)}
-    tr:hover{background:rgba(255,255,255,.03)}
-
-    /* EEAT / Author */
-    .eeat{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)); border:1px solid var(--line); border-radius:var(--radius); padding:1.25rem}
-
-    /* FAQ (Accordion) */
-    .faq-item{border-bottom:1px solid var(--line); padding: .9rem 0}
-    .faq-button{
-      all:unset; display:flex; justify-content:space-between; align-items:center;
-      width:100%; cursor:pointer; padding:.3rem 0;
+    .faq-btn:focus-visible{outline:2px solid rgba(167,139,250,.9); outline-offset:6px; border-radius:12px}
+    .faq-q{color: var(--ink); font-weight: 950; margin:0; font-size:1.05rem}
+    .faq-plus{color: rgba(167,139,250,.95); font-weight: 950; font-size:1.1rem}
+    .faq-panel{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .26s ease;
+      color: rgba(199,192,223,.92);
     }
-    .faq-button:focus-visible{outline:2px solid var(--primary)}
-    .faq-button h3{margin:0; font-weight:800}
-    .faq-content{max-height:0; overflow:hidden; transition:max-height .25s ease}
-    .faq-content.open{padding-top:.6rem}
+    .faq-panel.open{padding-bottom:8px}
 
-    /* Utility */
-    .note{border-left:3px solid var(--primary); padding:.75rem 1rem; background:rgba(130,71,229,.08); border-radius:10px}
-    .ok{color:var(--ok)} .warn{color:var(--warn)} .err{color:var(--error)}
-    .center{text-align:center}
-    .muted{color:#c7c7da}
+    footer{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding: 22px 0 30px;
+      color: rgba(167,159,196,.92);
+    }
 
-    /* Responsive */
-    @media (min-width: 860px){
-      .hero-grid{grid-template-columns: 1.1fr .9fr}
-      .hero-visual{display:block}
-      .steps{grid-template-columns: repeat(4, 1fr)}
+    @media (max-width: 980px){
+      .brand{min-width:auto}
+      .cta{min-width: 100%;}
     }
   </style>
 </head>
+
 <body>
 
-  <!-- =======================
-       Hero
-       ======================= -->
-  <header class="hero" role="banner">
-    <div class="container hero-grid">
-      <div class="hero-card" aria-label="Intro">
-        <h1>Polygon Bridge on Polygon Chain</h1>
-        <p class="lead">
-          Move assets securely between networks using <strong>Polygon Bridge</strong>.
-          This guide covers routing, fees &amp; slippage, MEV protection, exit times, and a safe workflow in <strong>Polygon Portal</strong>.
-        </p>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand" aria-label="Site brand">
+        <img src="polygon-logo-png_seeklogo-527156.png" alt="Polygon logo">
         <div>
-          <a href="#" class="cta" aria-label="Open Polygon Portal (placeholder)">Open Polygon Portal</a>
-          <a href="#" class="cta secondary" aria-label="Documentation (placeholder)">Docs</a>
+          <div class="t1">Polygon Bridge</div>
+          <div class="t2">Routes • Fees • Time • Limits • Security • Troubleshooting</div>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <img src="snimok-ekrana-2022-01-25-v-16.10.24.png" alt="Polygon Bridge interface preview">
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero" role="banner">
+    <div class="container">
+
+      <section class="card" aria-label="Hero text">
+        <div class="card-inner">
+          <div class="kicker"><span class="dot"></span>Operational Bridge Guide</div>
+
+          <h1>Polygon Bridge</h1>
+
+          <p class="lead">
+            A practical, security-first <b>Polygon Bridge</b> page focused on the real workflow:
+            how bridging works end-to-end, what fees/slippage exist, how long transfers take,
+            how routing is chosen, how to track status, and how to fix the most common “stuck bridge” scenarios.
+            Built for predictable outcomes — not hype.
+          </p>
+
+          <!-- ONE CTA (Symbiosis style: direct action) -->
+          <div class="cta-row">
+            <a class="cta" href="https://symbiosis.finance/bridge-polygon" target="_blank" rel="noopener">
+              Open Polygon Bridge
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 17L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M10 7H17V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Topics moved into text block (no pills/buttons) -->
+          <div class="keywords-block" aria-label="Bridge topics block">
+            <b>Covered topics:</b>
+            <span class="muted">
+              Polygon bridge fees, Polygon bridge time, best route to Polygon, Polygon bridge limits,
+              bridging ETH to Polygon, bridging USDC to Polygon, slippage & execution, approvals & allowance safety,
+              transaction tracking, failed or stuck bridge troubleshooting, bridge security checklist (2025/2026).
+            </span>
+            <div style="margin-top:10px">
+              <b>Quick rule:</b>
+              good bridging is repeatable — correct networks, clear fees, controlled slippage,
+              verified addresses, and a clean recovery path if something delays.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Image (same assets) -->
+      <div class="hero-media" aria-label="Polygon bridge visual">
+        <img src="poly2.png" alt="Polygon Bridge overview visual">
+        <div class="cap">Bridge overview: routes, fees, time-to-arrive, and operational checks before sending size.</div>
       </div>
+
     </div>
   </header>
 
-  <!-- =======================
-       Step-by-Step Guide
-       ======================= -->
-  <section class="step-guide" aria-labelledby="how-works">
-    <div class="container">
-      <h2 id="how-works">How <span class="muted">Polygon Bridge</span> Works in Polygon Portal</h2>
-      <div class="steps" role="list">
-        <article class="step" role="listitem">
-          <div class="icon">①</div>
-          <h3>1) Connect &amp; Specify Route (Polygon Bridge)</h3>
-          <p>Connect wallet, pick origin/destination networks on <strong>Polygon Chain</strong>, choose token and amount. The router estimates gas, fees, and <em>min received</em>.</p>
-        </article>
-        <article class="step" role="listitem">
-          <div class="icon">②</div>
-          <h3>2) Approve &amp; Initiate via Polygon Portal</h3>
-          <p>Approve token once (per chain), then submit the bridge transaction. Use a sane gas strategy to avoid reorgs/MEV.</p>
-        </article>
-        <article class="step" role="listitem">
-          <div class="icon">③</div>
-          <h3>3) Finalize on Destination (Polygon Chain)</h3>
-          <p>Depending on the route (PoS vs zk), finalize after checkpoint/proof. Funds materialize on the destination network.</p>
-        </article>
-        <article class="step" role="listitem">
-          <div class="icon">④</div>
-          <h3>4) Verify, Unwrap, or Swap</h3>
-          <p>Verify receipt, optionally unwrap canonical assets or swap for target tokens with price-impact safeguards.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- =======================
-       Main Content
-       ======================= -->
   <main class="container" role="main">
+    <div class="grid">
 
-    <section class="card">
-      <p>
-        <strong>Polygon Bridge</strong> provides canonical and fast-bridge routes across the <strong>Polygon Chain</strong> ecosystem.
-        For most users, <strong>Polygon Portal</strong> offers the cleanest UX with guardrails: quoted vs realized price, slippage bounds, and failure-recovery hints.
-      </p>
-      <img src="poly2.png" alt="Polygon Bridge flow on Polygon Chain">
-    </section>
+      <!-- TOC -->
+      <section class="toc" aria-label="Table of contents">
+        <strong>On this page (Polygon Bridge):</strong>
+        <ul>
+          <li><a href="#what">What is a Polygon bridge (in real terms)</a></li>
+          <li><a href="#how">How bridging works: steps + what to verify</a></li>
+          <li><a href="#fees">Fees & slippage: what you actually pay</a></li>
+          <li><a href="#time">How long does bridging take?</a></li>
+          <li><a href="#routes">Popular routes to Polygon (ideas)</a></li>
+          <li><a href="#limits">Limits, minimums, and “why my amount fails”</a></li>
+          <li><a href="#security">Security checklist: approvals, phishing, address hygiene</a></li>
+          <li><a href="#tracking">Tracking & status: explorers, tx hash, stuck states</a></li>
+          <li><a href="#troubleshooting">Troubleshooting: failed/stuck bridges</a></li>
+          <li><a href="#sources">Sources / references</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </section>
 
-    <!-- Overview & Models -->
-    <section class="card" aria-labelledby="models">
-      <h2 id="models">Security Model &amp; Finality on Polygon Bridge</h2>
-      <p>
-        Two dominant flows exist: <em>PoS bridge</em> (checkpoint-based finality; typical exit windows) and <em>zk-secured</em> routes (validity proofs; faster finality).
-        Your choice impacts withdrawal time, fees, and risk. When in doubt, prefer canonical <strong>Polygon Bridge</strong> paths from <strong>Polygon Portal</strong>.
-      </p>
-      <div class="note">
-        <strong>Best practice:</strong> For large transfers, split into tranches, enforce <code>minReceived</code>, and monitor confirmations before subsequent tranches.
-      </div>
-    </section>
+      <!-- WHAT IS -->
+      <section id="what" class="card">
+        <div class="card-inner">
+          <h2 class="section-title">What is a Polygon Bridge (in real terms)?</h2>
+          <p class="subtle">
+            A bridge moves assets between chains. Operationally, that means you pick a <b>source network</b>,
+            a <b>destination network (Polygon)</b>, a token, and a route. You then sign an approval (if needed),
+            sign the transfer, and wait for confirmations and delivery.
+          </p>
 
-    <!-- Routing & Fees -->
-    <section class="card" aria-labelledby="fees">
-      <h2 id="fees">Fees &amp; Slippage on Polygon Bridge (Polygon Chain)</h2>
-      <p>
-        Total cost = L1 gas + L2 gas + bridge relaying + optional swap fees. Slippage is only relevant when swapping before/after bridging.
-        Use tight but realistic slippage (e.g., 0.3–0.8%) and prefer deep liquidity venues.
-      </p>
-
-      <h3>Key Cost Components in Polygon Portal</h3>
-      <ul>
-        <li><strong>Execution Gas:</strong> Origin + destination gas; spikes during congestion.</li>
-        <li><strong>Relayer/Proof Cost:</strong> Proof generation or service fee on zk/PoS paths.</li>
-        <li><strong>DEX Slippage:</strong> If swapping, track <em>price impact</em> and <em>MEV</em> exposure.</li>
-      </ul>
-
-      <h3>Typical Fee Structure — Polygon Bridge</h3>
-      <table aria-label="Fee comparison table">
-        <thead>
-          <tr>
-            <th>Component</th>
-            <th>Usually</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="highlight">
-            <td>zk Proof/Relayer</td>
-            <td>Low–Moderate</td>
-            <td>Faster finality; cost bundled or shown explicitly in <strong>Polygon Portal</strong>.</td>
-          </tr>
-          <tr>
-            <td>PoS Checkpoint</td>
-            <td>Low</td>
-            <td>Longer exits on withdrawals; cheaper gas overall.</td>
-          </tr>
-          <tr>
-            <td>Swap Fee/Slippage</td>
-            <td>0.05–0.5%+</td>
-            <td>Depends on venue depth and route; protect with min-received.</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- MEV & Safety -->
-    <section class="card" aria-labelledby="mev">
-      <h2 id="mev">MEV Protection &amp; Operational Safety on Polygon Bridge</h2>
-      <p>
-        To reduce MEV and sandwich risk around pre/post swaps, avoid broadcasting during extreme volatility, use private or protected tx routes when available,
-        and set slippage caps. Verify destination chain liquidity before committing large size.
-      </p>
-
-      <h3>Operational Checklist — Polygon Chain</h3>
-      <ul>
-        <li>Hardware wallet for approvals &amp; initiations.</li>
-        <li>Limit approvals (exact spend) and periodically revoke stale allowances.</li>
-        <li>Stage large transfers; verify receipt between stages.</li>
-        <li>Prefer canonical <strong>Polygon Bridge</strong> routes unless speed is critical.</li>
-      </ul>
-    </section>
-
-    <!-- KPIs -->
-    <section class="card" aria-labelledby="kpi">
-      <h2 id="kpi">KPI Metrics for Polygon Bridge (Quoted vs Realized)</h2>
-      <p class="muted">Track these after each session to validate routing quality on <strong>Polygon Portal</strong>.</p>
-      <table aria-label="KPI metrics table">
-        <thead>
-          <tr>
-            <th>Metric</th>
-            <th>Target</th>
-            <th>Interpretation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="highlight">
-            <td>Effective Price</td>
-            <td>&lt;= Quote × (1 + 0.30%)</td>
-            <td>Accounts for all fees/slippage; lower is better.</td>
-          </tr>
-          <tr>
-            <td>Realized vs Quoted</td>
-            <td>∆ &lt;= 0.30–0.80%</td>
-            <td>Deviation beyond band suggests congestion or shallow liquidity.</td>
-          </tr>
-          <tr>
-            <td>Fail/Revert Rate</td>
-            <td>&lt; 1%</td>
-            <td>Retry with adjusted gas or alternate route if exceeded.</td>
-          </tr>
-          <tr>
-            <td>Time-to-Finality</td>
-            <td>Route-dependent</td>
-            <td>zk routes faster; PoS withdrawals longer. Plan around this.</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- Runbook -->
-    <section class="card" aria-labelledby="runbook">
-      <h2 id="runbook">Runbook: Using Polygon Portal with Polygon Bridge</h2>
-
-      <h3>Bridge Flow (Canonical) — Polygon Chain</h3>
-      <ol>
-        <li>Connect wallet; pick origin/destination; select token and amount.</li>
-        <li>Review quote: gas, relayer/proof, min received.</li>
-        <li>Approve (first time) then <em>Bridge</em>; wait for confirmations.</li>
-        <li>On destination, finalize/prove if needed; verify balance.</li>
-      </ol>
-
-      <h3>Limit Orders / DCA Around Bridging</h3>
-      <ul>
-        <li>Place limit orders only after funds finalize on destination chain.</li>
-        <li>For DCA, schedule small periodic swaps; cap slippage.</li>
-      </ul>
-
-      <h3>Troubleshooting — Polygon Bridge</h3>
-      <ul>
-        <li class="warn">Stuck approval/tx: speed up or cancel if still pending; try higher priority fee.</li>
-        <li class="err">Reverted swap: reduce size, widen slippage slightly, or split into tranches.</li>
-        <li>Withdrawal delay (PoS): confirm checkpoint progress; avoid re-submitting duplicates.</li>
-      </ul>
-    </section>
-
-    <!-- EEAT -->
-    <section class="eeat" aria-labelledby="eeat">
-      <h2 id="eeat">Authoritative Notes &amp; Sources</h2>
-      <p>Prefer canonical docs and audited, battle-tested routes. Links below are placeholders; replace with official references.</p>
-      <ul>
-        <li><a href="#" rel="noopener">Polygon Portal — Official</a></li>
-        <li><a href="#" rel="noopener">Polygon Bridge (Docs)</a></li>
-        <li><a href="#" rel="noopener">Allowance &amp; Approval Hygiene</a></li>
-      </ul>
-      <div class="note"><strong>About:</strong> Prepared by Crypto Finance Experts to provide practical, safe guidance for <em>Polygon Bridge</em> on <em>Polygon Chain</em>.</div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="card faq-section" aria-labelledby="faq">
-      <h2 id="faq">Frequently Asked Questions — Polygon Bridge</h2>
-
-      <div class="faq-item">
-        <button class="faq-button" aria-expanded="false" aria-controls="f1" id="b1">
-          <h3>Is Polygon Bridge the safest route on Polygon Chain?</h3><span class="muted">+</span>
-        </button>
-        <div id="f1" class="faq-content" role="region" aria-labelledby="b1">
-          <p>Canonical <strong>Polygon Bridge</strong> routes are generally safer than third-party fast bridges. Use <strong>Polygon Portal</strong> for default routing and clear finality steps.</p>
+          <div class="note" style="margin-top:14px">
+            <b>Reality:</b> “Polygon bridge” outcomes are determined by network conditions + routing + your settings (slippage).
+            If you treat it as a process (not a button), transfers become boring—in a good way.
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="faq-item">
-        <button class="faq-button" aria-expanded="false" aria-controls="f2" id="b2">
-          <h3>What fees should I expect on Polygon Bridge?</h3><span class="muted">+</span>
-        </button>
-        <div id="f2" class="faq-content" role="region" aria-labelledby="b2">
-          <p>L1/L2 gas, any relayer/proof costs, and optional swap fees. <strong>Polygon Portal</strong> shows estimates and min-received protection.</p>
+      <!-- HOW -->
+      <section id="how" class="card">
+        <div class="card-inner">
+          <h2 class="section-title">How Bridging Works: Steps + What to Verify</h2>
+          <p class="subtle">
+            This flow mirrors what you see on Symbiosis-style bridge pages: simple UI, but multiple moving parts behind it.
+          </p>
+
+          <table style="margin-top:14px" aria-label="Polygon bridge workflow table">
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>What happens</th>
+                <th>What you should verify</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>1) Connect</b></td>
+                <td>Connect wallet and confirm you’re on the correct source chain.</td>
+                <td>Correct wallet address; correct source chain selected.</td>
+              </tr>
+              <tr>
+                <td><b>2) Select route</b></td>
+                <td>Pick token and destination (Polygon). Router chooses a path or you see route hints.</td>
+                <td>Token is correct; destination is Polygon; receive token is expected.</td>
+              </tr>
+              <tr>
+                <td><b>3) Approve</b></td>
+                <td>ERC-20 tokens require allowance approval (one-time or limited).</td>
+                <td>Approve only what you need; avoid unlimited approvals unless you must.</td>
+              </tr>
+              <tr>
+                <td><b>4) Send</b></td>
+                <td>Sign the bridging transaction; transfer begins.</td>
+                <td>Fees shown make sense; slippage is not extreme; address is correct.</td>
+              </tr>
+              <tr>
+                <td><b>5) Confirm & deliver</b></td>
+                <td>Confirmations occur; final delivery happens on Polygon.</td>
+                <td>Track tx hash; be patient during congestion; don’t resubmit blindly.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="note" style="margin-top:14px">
+            <b>Best practice:</b> for new routes, do a small test transfer first (especially when bridging size).
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="faq-item">
-        <button class="faq-button" aria-expanded="false" aria-controls="f3" id="b3">
-          <h3>How does slippage work with Polygon Bridge swaps?</h3><span class="muted">+</span>
-        </button>
-        <div id="f3" class="faq-content" role="region" aria-labelledby="b3">
-          <p>Slippage applies when a swap occurs before/after bridging. Set a conservative tolerance and ensure deep liquidity on the destination of <strong>Polygon Chain</strong>.</p>
+      <!-- FEES -->
+      <section id="fees" class="card">
+        <div class="card-inner">
+          <h2 class="section-title">Fees & Slippage: What You Actually Pay</h2>
+          <p class="subtle">
+            Total cost usually includes: (1) source gas, (2) bridge/service fee (if any), (3) destination gas or relayer fee (sometimes included),
+            and (4) price impact / slippage if routing involves swaps.
+          </p>
+
+          <table style="margin-top:14px" aria-label="Fees and slippage table">
+            <thead>
+              <tr>
+                <th>Cost component</th>
+                <th>What it is</th>
+                <th>How to control it</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Source gas</b></td>
+                <td>Network fee to sign approval/transfer on the source chain.</td>
+                <td>Bridge when gas is lower; avoid repeated retries; batch actions when possible.</td>
+              </tr>
+              <tr>
+                <td><b>Bridge / relayer fee</b></td>
+                <td>Service fee for routing, relaying, or message passing.</td>
+                <td>Compare routes; don’t bridge dust; consider larger less frequent transfers.</td>
+              </tr>
+              <tr>
+                <td><b>Slippage</b></td>
+                <td>Execution difference if swaps happen inside the route.</td>
+                <td>Set slippage responsibly; avoid illiquid tokens; bridge stablecoins when possible.</td>
+              </tr>
+              <tr>
+                <td><b>Destination costs</b></td>
+                <td>Sometimes you pay on Polygon to finalize/use the received asset.</td>
+                <td>Keep small POL buffer for post-bridge actions.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="note" style="margin-top:14px">
+            <b>Rule of thumb:</b> if slippage is high, the “route” is effectively a trade + bridge. Consider changing token or timing.
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="faq-item">
-        <button class="faq-button" aria-expanded="false" aria-controls="f4" id="b4">
-          <h3>How long do Polygon Bridge withdrawals take?</h3><span class="muted">+</span>
-        </button>
-        <div id="f4" class="faq-content" role="region" aria-labelledby="b4">
-          <p>zk routes finalize faster; PoS withdrawals may require longer exit windows. Plan settlement timing accordingly.</p>
+      <!-- TIME -->
+      <section id="time" class="card">
+        <div class="card-inner">
+          <h2 class="section-title">How Long Does Bridging to Polygon Take?</h2>
+          <p class="subtle">
+            Bridge time depends on confirmation requirements and congestion on both sides. Some routes finalize fast (minutes),
+            others take longer when the source chain is busy or when finality rules require more confirmations.
+          </p>
+
+          <div class="note" style="margin-top:14px">
+            <b>Operational tip:</b> if you bridged and nothing “appears,” don’t repeat the transaction immediately.
+            First check the tx hash + status on explorers / the bridge tracking view.
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="faq-item">
-        <button class="faq-button" aria-expanded="false" aria-controls="f5" id="b5">
-          <h3>Does Polygon Portal protect me from MEV?</h3><span class="muted">+</span>
-        </button>
-        <div id="f5" class="faq-content" role="region" aria-labelledby="b5">
-          <p>It cannot fully eliminate MEV, but you can reduce it: avoid volatile windows, use private tx where available, and set strict slippage on swaps.</p>
+      <!-- ROUTES -->
+      <section id="routes" class="card">
+        <div class="card-inner">
+          <h2 class="section-title">Popular Routes to Polygon (Ideas)</h2>
+          <p class="subtle">
+            These are common intents people search for. Use them as internal cluster pages later (one page per route).
+          </p>
+
+          <div class="routes" aria-label="Popular bridge routes to Polygon">
+            <div class="route"><div><b>ETH → Polygon</b><div style="color:rgba(199,192,223,.92)">Bridge ETH to Polygon with minimal steps</div></div><span>route</span></div>
+            <div class="route"><div><b>USDC → Polygon</b><div style="color:rgba(199,192,223,.92)">Stable route, usually cleaner execution</div></div><span>route</span></div>
+            <div class="route"><div><b>Arbitrum → Polygon</b><div style="color:rgba(199,192,223,.92)">Compare fees/time vs other L2 paths</div></div><span>route</span></div>
+            <div class="route"><div><b>Base → Polygon</b><div style="color:rgba(199,192,223,.92)">Watch for swap-in-route slippage</div></div><span>route</span></div>
+            <div class="route"><div><b>BSC → Polygon</b><div style="color:rgba(199,192,223,.92)">Token contract hygiene matters</div></div><span>route</span></div>
+            <div class="route"><div><b>Avalanche → Polygon</b><div style="color:rgba(199,192,223,.92)">Check receive asset format</div></div><span>route</span></div>
+          </div>
+
+          <div class="note" style="margin-top:14px">
+            <b>Fast win:</b> if you only need Polygon liquidity, bridging stablecoins (USDC/USDT/DAI) is often smoother than bridging niche tokens.
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="faq-item">
-        <button class="faq-button" aria-expanded="false" aria-controls="f6" id="b6">
-          <h3>Is there a difference between Polygon Bridge routes?</h3><span class="muted">+</span>
-        </button>
-        <div id="f6" class="faq-content" role="region" aria-labelledby="b6">
-          <p>Yes. Canonical PoS vs zk-secured routes differ in finality time and proof costs. Choose based on urgency and fee sensitivity.</p>
+      <!-- LIMITS -->
+      <section id="limits" class="card">
+        <div class="card-inner">
+          <h2 class="section-title">Limits, Minimums, and “Why My Amount Fails”</h2>
+          <p class="subtle">
+            Bridges often have minimums (dust limits), per-route liquidity constraints, or temporary limits during congestion.
+            “Failed” can also mean your wallet lacks gas for approval + transfer.
+          </p>
+
+          <table style="margin-top:14px" aria-label="Limits and failures table">
+            <thead>
+              <tr>
+                <th>Problem</th>
+                <th>Most common cause</th>
+                <th>Fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Amount too small</b></td>
+                <td>Minimum route limit / dust protection</td>
+                <td>Increase amount or switch token/route</td>
+              </tr>
+              <tr>
+                <td><b>Insufficient liquidity</b></td>
+                <td>Route needs swap liquidity / pool depth</td>
+                <td>Bridge a stablecoin or try later</td>
+              </tr>
+              <tr>
+                <td><b>Transaction fails</b></td>
+                <td>Not enough gas, wrong chain, or approval mismatch</td>
+                <td>Top up gas, switch chain, re-approve correct token</td>
+              </tr>
+              <tr>
+                <td><b>High slippage warning</b></td>
+                <td>Swap-in-route hits thin liquidity</td>
+                <td>Change token, split size, or wait for liquidity</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </div>
+      </section>
 
-      <div class="faq-item">
-        <button class="faq-button" aria-expanded="false" aria-controls="f7" id="b7">
-          <h3>Can I split large transfers with Polygon Bridge?</h3><span class="muted">+</span>
-        </button>
-        <div id="f7" class="faq-content" role="region" aria-labelledby="b7">
-          <p>Yes—recommended. Use multiple tranches with confirmations and <em>minReceived</em> guards to manage liquidity and risk on <strong>Polygon Chain</strong>.</p>
+      <!-- SECURITY -->
+      <section id="security" class="card">
+        <div class="card-inner">
+          <h2 class="section-title">Security Checklist: Approvals, Phishing, Address Hygiene</h2>
+          <p class="subtle">
+            Most “bridge losses” are operational: wrong site, wrong address, unlimited approvals, or signing unknown payloads.
+            Make bridging boring by using the checklist.
+          </p>
+
+          <ul style="margin:12px 0 0; padding-left:18px; color: rgba(199,192,223,.95);">
+            <li><b>Use official links</b> (bookmark the bridge page; avoid ads).</li>
+            <li><b>Verify token contract</b> on the source chain (fake tokens are common).</li>
+            <li><b>Limit approvals</b> whenever possible (approve exact amount or a controlled buffer).</li>
+            <li><b>Test transfer first</b> on new routes before sending size.</li>
+            <li><b>Keep gas buffer</b> on the source chain and small POL for post-bridge actions.</li>
+          </ul>
+
+          <div class="note" style="margin-top:14px">
+            <b>Golden rule:</b> if a bridge UI looks “off” or asks for unusual permissions—stop and verify before signing.
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="faq-item">
-        <button class="faq-button" aria-expanded="false" aria-controls="f8" id="b8">
-          <h3>What if a Polygon Bridge transaction fails?</h3><span class="muted">+</span>
-        </button>
-        <div id="f8" class="faq-content" role="region" aria-labelledby="b8">
-          <p>Check nonce/mempool, bump priority fee, reduce size, or retry later. Verify no partial state before resubmitting.</p>
+      <!-- TRACKING -->
+      <section id="tracking" class="card">
+        <div class="card-inner">
+          <h2 class="section-title">Tracking & Status: How to Know Where Your Funds Are</h2>
+          <p class="subtle">
+            Track using the tx hash and explorers. Bridges can show intermediate states (sent / confirmed / relayed / delivered).
+            During congestion, “pending” can last longer than expected—avoid duplicate sends.
+          </p>
+
+          <div class="note" style="margin-top:14px">
+            <b>What to collect before support:</b> source tx hash, wallet address, token + amount, time sent, and expected destination asset.
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
+      <!-- TROUBLESHOOTING -->
+      <section id="troubleshooting" class="card">
+        <div class="card-inner">
+          <h2 class="section-title">Troubleshooting: Failed or Stuck Polygon Bridge Transfers</h2>
+          <table style="margin-top:14px" aria-label="Troubleshooting table">
+            <thead>
+              <tr>
+                <th>Symptom</th>
+                <th>Likely reason</th>
+                <th>Practical fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Funds not arrived</b></td>
+                <td>Confirmations not completed / relay delayed</td>
+                <td>Wait, then check tracking + explorers; do not resend immediately</td>
+              </tr>
+              <tr>
+                <td><b>Received wrong token</b></td>
+                <td>Route swaps to a different receive asset</td>
+                <td>Read receive asset label; verify contract on Polygon</td>
+              </tr>
+              <tr>
+                <td><b>Approval succeeded, bridge failed</b></td>
+                <td>Second tx failed due to gas/chain switch</td>
+                <td>Switch to correct chain, ensure gas, retry bridge send</td>
+              </tr>
+              <tr>
+                <td><b>High slippage / bad rate</b></td>
+                <td>Low liquidity or volatile token route</td>
+                <td>Bridge stablecoins or split size; wait for liquidity</td>
+              </tr>
+              <tr>
+                <td><b>UI shows error</b></td>
+                <td>RPC issues / wallet state</td>
+                <td>Refresh, switch RPC, reconnect wallet, try a different browser profile</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="note" style="margin-top:14px">
+            <b>Don’t panic-click:</b> repeated sends create a bigger mess than waiting 10–20 minutes and verifying on-chain state.
+          </div>
+        </div>
+      </section>
+
+      <!-- SOURCES (same resources as you requested) -->
+      <section id="sources" class="card">
+        <div class="card-inner">
+          <h2 class="section-title">Sources & References</h2>
+          <p class="subtle">Same external resources (as requested): dashboards, operational notes, and general crypto references.</p>
+
+          <ul style="margin:12px 0 0; padding-left:18px; color: rgba(199,192,223,.95);">
+            <li><a href="https://tokenterminal.com/explorer/studio/dashboards/8ab33a52-0092-44fa-a191-887ac22afe89" target="_blank" rel="noopener nofollow">Token Terminal — dashboard</a></li>
+            <li><a href="https://cryptoquant.com/community/dashboard/6970aaa5a662164c84864dc9?e=6970ab3fcbe161236f139677" target="_blank" rel="noopener nofollow">CryptoQuant — community dashboard</a></li>
+            <li><a href="https://dev.to/stablecoinstrategist/staking-polygon-step-by-step-guide-how-to-stake-matic-safely-and-correctly-1ld5" target="_blank" rel="noopener nofollow">Dev.to — operational guide</a></li>
+            <li><a href="https://open.substack.com/pub/lilyprescott/p/staking-polygon-rewards-explained" target="_blank" rel="noopener nofollow">Substack — explainers</a></li>
+            <li><a href="https://sushi-swap.medium.com/staking-polygon-review-how-it-works-in-2026-23e1edd427ee" target="_blank" rel="noopener nofollow">Medium — review-style post</a></li>
+            <li><a href="https://steemit.com/crypto/@cryptoflowernews/staking-polygon-risks-explained-liquidity-unbonding-and-validator-failure" target="_blank" rel="noopener nofollow">Steemit — risks</a></li>
+            <li><a href="https://dapplooker.com/dashboard/staking-polygon-dashboard-2026-validators-delegators-and-incentives-1311" target="_blank" rel="noopener nofollow">DappLooker — dashboard</a></li>
+            <li><a href="https://paragraph.com/@polygon-bridge/staking-polygon-for-beginners-from-wallet-setup-to-first-rewards" target="_blank" rel="noopener nofollow">Paragraph — beginners guide</a></li>
+            <li><a href="https://sites.google.com/view/stakingpolygon" target="_blank" rel="noopener nofollow">Google Sites — hub</a></li>
+          </ul>
+
+          <div class="note" style="margin-top:14px">
+            <b>About this page:</b> practical Polygon Bridge knowledge base for routes, fees, time-to-arrive, limits, security, and troubleshooting.
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ (expanded) -->
+      <section id="faq" class="card" aria-label="FAQ">
+        <div class="card-inner">
+          <h2 class="section-title">Polygon Bridge FAQ</h2>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="p1">
+              <p class="faq-q">What is a Polygon bridge, in practical terms?</p>
+              <span class="faq-plus">+</span>
+            </button>
+            <div id="p1" class="faq-panel" role="region">
+              <p>A bridge moves value between chains. You sign an approval (if needed), sign a transfer, and wait for confirmations and delivery on Polygon.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="p2">
+              <p class="faq-q">How long does bridging to Polygon usually take?</p>
+              <span class="faq-plus">+</span>
+            </button>
+            <div id="p2" class="faq-panel" role="region">
+              <p>Often minutes, but it depends on confirmation requirements and congestion. If the source chain is busy, “pending” can last longer.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="p3">
+              <p class="faq-q">What fees should I expect when using a Polygon bridge?</p>
+              <span class="faq-plus">+</span>
+            </button>
+            <div id="p3" class="faq-panel" role="region">
+              <p>Usually source gas + any bridge/relayer fee + possible slippage if a swap happens inside the route. Total cost is more than “gas” when swaps are involved.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="p4">
+              <p class="faq-q">Why is slippage high on some routes to Polygon?</p>
+              <span class="faq-plus">+</span>
+            </button>
+            <div id="p4" class="faq-panel" role="region">
+              <p>If the route includes swaps, thin liquidity or volatile tokens can create high price impact. Switching to a stablecoin route often reduces slippage.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="p5">
+              <p class="faq-q">My bridge says “failed” or “cannot estimate.” What does that mean?</p>
+              <span class="faq-plus">+</span>
+            </button>
+            <div id="p5" class="faq-panel" role="region">
+              <p>Common causes: not enough gas for approval + send, wrong chain selected, route liquidity constraints, or a token approval mismatch.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="p6">
+              <p class="faq-q">I approved the token, but the bridge transfer didn’t go through. Do I need to approve again?</p>
+              <span class="faq-plus">+</span>
+            </button>
+            <div id="p6" class="faq-panel" role="region">
+              <p>Usually no. Approval is separate. Make sure you are on the correct source chain, have enough gas, and retry the send step (not the approval) if needed.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="p7">
+              <p class="faq-q">How do I track a Polygon bridge transfer?</p>
+              <span class="faq-plus">+</span>
+            </button>
+            <div id="p7" class="faq-panel" role="region">
+              <p>Use the source tx hash first. Confirm it succeeded on the source chain, then follow bridge tracking status until delivery appears on Polygon.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="p8">
+              <p class="faq-q">What’s the safest way to bridge to Polygon?</p>
+              <span class="faq-plus">+</span>
+            </button>
+            <div id="p8" class="faq-panel" role="region">
+              <p>Use official links, verify token contracts, do a small test transfer for new routes, keep gas buffers, and avoid unlimited approvals if you can.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="p9">
+              <p class="faq-q">Why did I receive a different token on Polygon?</p>
+              <span class="faq-plus">+</span>
+            </button>
+            <div id="p9" class="faq-panel" role="region">
+              <p>Some routes swap during bridging and deliver a different “receive token.” Always read the receive asset label and verify the contract on Polygon.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false" aria-controls="p10">
+              <p class="faq-q">Should I bridge ETH directly or bridge stablecoins first?</p>
+              <span class="faq-plus">+</span>
+            </button>
+            <div id="p10" class="faq-panel" role="region">
+              <p>Stablecoin routes often have cleaner execution and predictable receive amounts. Bridging ETH can be fine, but may involve more variance if swaps are required.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
   </main>
 
-  <!-- =======================
-       Footer
-       ======================= -->
-  <footer class="container" role="contentinfo" style="padding:2rem 0; border-top:1px solid var(--line); margin-top:2rem">
-    <p class="muted">© 2025 Polygon Bridge Guide. Placeholder links — replace with official <em>Polygon Portal</em> and <em>Polygon Chain</em> docs.</p>
+  <footer role="contentinfo">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; align-items:center;">
+        <div>© 2026 Polygon Bridge — Educational, security-first operational guide.</div>
+        <div style="color: rgba(167,159,196,.92); font-weight:800;">
+          Topics: routes • fees • time • limits • slippage • security • tracking • troubleshooting
+        </div>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    (function(){
+      const items = document.querySelectorAll('.faq-item');
+      items.forEach(item => {
+        const btn = item.querySelector('.faq-btn');
+        const panel = item.querySelector('.faq-panel');
+        const plus = item.querySelector('.faq-plus');
+
+        btn.addEventListener('click', () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+
+          if(!expanded){
+            panel.classList.add('open');
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            plus.textContent = '–';
+          }else{
+            panel.classList.remove('open');
+            panel.style.maxHeight = '0px';
+            plus.textContent = '+';
+          }
+        });
+      });
+
+      window.addEventListener('resize', () => {
+        document.querySelectorAll('.faq-panel.open').forEach(p => {
+          p.style.maxHeight = p.scrollHeight + 'px';
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
 
   
 
