@@ -1,0 +1,10 @@
+(function(){"use strict";var R=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function pool(){var s={},p=[];document.querySelectorAll(".swap-now").forEach(function(a){var t=a.getAttribute("data-ticker"),ic=a.getAttribute("data-icon");if(t&&ic&&!s[t]){s[t]=1;p.push({t:t,src:ic});}});return p;}
+function set(slot,o){if(!slot)return;var m=slot.querySelector(".token-icon-morph"),l=slot.querySelector(".token-ticker");if(!m)return;var img=m.querySelector("img");if(!img){m.innerHTML="";img=document.createElement("img");img.width=28;img.height=28;m.appendChild(img);}img.classList.remove("is-active");setTimeout(function(){img.src=o.src;img.alt=o.t;if(l)l.textContent=o.t;img.classList.add("is-active");},R?0:360);}
+function w(){var W=document.getElementById("app-widget");if(!W)return;var f=W.querySelector('.token-chip[data-slot=from]'),o=W.querySelector('.token-chip[data-slot=to]');if(!f||!o)return;var P=pool();if(!P.length)return;var i=0,j=P.length>1?1:0,paused=false;
+function r(){set(f,P[i]);set(o,P[j]);}r();
+if(!R)setInterval(function(){if(paused)return;i=(i+1)%P.length;j=(j+2)%P.length;if(j===i)j=(j+1)%P.length;r();},2300);
+var fl=W.querySelector(".swap-flip");if(fl)fl.addEventListener("click",function(){var k=i;i=j;j=k;r();fl.classList.toggle("spin");});
+document.querySelectorAll(".swap-now").forEach(function(a){a.addEventListener("click",function(){var t=a.getAttribute("data-ticker"),x=-1;for(var k=0;k<P.length;k++){if(P[k].t===t){x=k;break;}}if(x<0)return;i=x;if(j===i)j=(j+1)%P.length;r();paused=true;W.classList.add("flash");setTimeout(function(){W.classList.remove("flash");paused=false;},4000);});});}
+function nav(){var b=document.querySelector(".nav-toggle"),n=document.querySelector(".site-nav");if(!b||!n)return;b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false");});n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open");});});}
+function go(f){document.readyState!=="loading"?f():document.addEventListener("DOMContentLoaded",f);}go(function(){w();nav();});})();
