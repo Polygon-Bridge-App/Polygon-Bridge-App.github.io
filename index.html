@@ -7,18 +7,19 @@
   <meta name="description" content="Polygon Bridge moves ETH and tokens from Ethereum to Polygon from your own wallet.">
   <link rel="canonical" href="https://polygon-bridge-app.github.io/">
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="theme-color" content="#F8F8FA">
+  <meta name="theme-color" content="#F8F7FB">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Polygon Bridge">
   <meta property="og:description" content="Polygon Bridge moves ETH and tokens from Ethereum to Polygon from your own wallet.">
   <meta property="og:url" content="https://polygon-bridge-app.github.io/">
-  <meta property="og:image" content="https://polygon-bridge-app.github.io/favicon.png">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://polygon-bridge-app.github.io/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Polygon Bridge">
   <meta name="twitter:description" content="Polygon Bridge moves ETH and tokens from Ethereum to Polygon from your own wallet.">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="manifest" href="site.webmanifest">
+  <link rel="sitemap" type="application/xml" href="sitemap.xml">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
@@ -29,20 +30,8 @@
         "@id": "https://polygon-bridge-app.github.io/#website",
         "url": "https://polygon-bridge-app.github.io/",
         "name": "Polygon Bridge",
+        "description": "Polygon Bridge moves ETH and tokens from Ethereum to Polygon from your own wallet.",
         "inLanguage": "en"
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://polygon-bridge-app.github.io/#organization",
-        "name": "Polygon",
-        "url": "https://polygon.technology/",
-        "logo": "https://polygon-bridge-app.github.io/favicon.png",
-        "sameAs": [
-          "https://polygon.technology/",
-          "https://x.com/0xPolygon",
-          "https://github.com/0xPolygon",
-          "https://docs.polygon.technology/"
-        ]
       },
       {
         "@type": "WebApplication",
@@ -52,12 +41,19 @@
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Web",
         "url": "https://polygon-bridge-app.github.io/",
-        "publisher": { "@id": "https://polygon-bridge-app.github.io/#organization" },
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
+        "publisher": { "@id": "https://polygon-bridge-app.github.io/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://polygon-bridge-app.github.io/#organization",
+        "name": "Polygon",
+        "url": "https://polygon.technology/",
+        "logo": "https://polygon-bridge-app.github.io/favicon.png",
+        "sameAs": [
+          "https://polygon.technology/",
+          "https://polygonscan.com/",
+          "https://portal.polygon.technology/"
+        ]
       }
     ]
   }
@@ -65,67 +61,137 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="brand" aria-label="Polygon">
+    <a class="brand" href="https://polygon.technology/" target="_blank" rel="nofollow noopener noreferrer" aria-label="Polygon Bridge">
       <img src="favicon.png" width="30" height="30" alt="">
-      <span>Polygon</span>
-    </div>
-    <nav class="nav" aria-label="Trusted references">
+      <span>Polygon Bridge</span>
+    </a>
+    <span class="spacer" aria-hidden="true"></span>
+    <nav class="nav" aria-label="Authority links">
       <a href="https://etherscan.io/" target="_blank" rel="nofollow noopener noreferrer">Etherscan</a>
       <a href="https://polygonscan.com/" target="_blank" rel="nofollow noopener noreferrer">PolygonScan</a>
       <a href="https://portal.polygon.technology/" target="_blank" rel="nofollow noopener noreferrer">Portal</a>
     </nav>
-    <span class="spacer"></span>
-    <a class="open-app" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Open app</a>
   </header>
 
-  <main class="stage">
-    <section class="hero" aria-label="Overview">
-      <h1>Polygon Bridge</h1>
-      <p class="value"><strong>Polygon Bridge</strong> moves ETH and tokens from Ethereum to Polygon from your own wallet.</p>
-    </section>
-
-    <section class="card" aria-label="Bridge preview">
-      <div class="route">
-        <div class="leg">
-          <span class="label">From</span>
-          <span class="chip">
-            <img src="eth.png" width="28" height="28" alt="ETH">
-            <span>ETH</span>
-          </span>
+  <main class="page">
+    <section class="hero" aria-label="Polygon Bridge overview">
+      <div class="hero-copy">
+        <h1>Polygon Bridge</h1>
+        <p class="deck"><strong>Polygon Bridge</strong> moves ETH and tokens from Ethereum to Polygon from your own wallet.</p>
+        <div class="trust-row" aria-label="Trust signals">
+          <span>Bridge to Polygon</span>
+          <span>Fast &amp; low-cost</span>
+          <span>Non-custodial</span>
         </div>
-        <button class="switch" type="button" data-switch aria-label="Switch direction">
-          <span aria-hidden="true">&#8594;</span>
-        </button>
-        <div class="leg">
-          <span class="label">To</span>
-          <span class="chip">
-            <img src="pol.png" width="28" height="28" alt="POL">
-            <span>POL</span>
-          </span>
-        </div>
+        <a class="button button-primary hero-cta" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">
+          <span>Enter App</span>
+          <span class="button-arrow" aria-hidden="true">&rsaquo;</span>
+        </a>
       </div>
-      <a class="enter" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Enter App</a>
 
+      <section class="bridge-card" aria-label="Bridge preview">
+        <div class="card-chrome">
+          <span class="selector-pill">Ethereum to Polygon</span>
+          <span class="preview-pill"><i aria-hidden="true"></i>Preview</span>
+        </div>
+
+        <div class="route" data-route>
+          <div class="route-panel route-from">
+            <span class="route-label">From</span>
+            <div class="asset">
+              <img src="eth.png" width="34" height="34" alt="ETH">
+              <div>
+                <span class="asset-symbol">ETH</span>
+                <span class="asset-name">Ethereum</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="switch" type="button" data-switch aria-label="Switch bridge direction">
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+
+          <div class="route-panel route-to">
+            <span class="route-label">To</span>
+            <div class="asset">
+              <img src="pol.png" width="34" height="34" alt="POL">
+              <div>
+                <span class="asset-symbol">POL</span>
+                <span class="asset-name">Polygon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="best-route" aria-label="Best route preview">
+          <span>Best route</span>
+          <span class="hop-line" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Wallet stays in control</span>
+        </div>
+        <p class="card-hint">Review the route before continuing to the app.</p>
+        <a class="button button-primary card-cta" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">
+          <span>Start Bridge</span>
+          <span class="button-arrow" aria-hidden="true">&rsaquo;</span>
+        </a>
+      </section>
     </section>
-  </main>
 
-  <footer class="foot">
-    <b>Polygon Bridge</b> &mdash; 2026
-  </footer>
+    <section class="sources" aria-label="Polygon ecosystem sources">
+      <div class="sources-label">
+        <span>Sources</span>
+        <b>Around the Polygon ecosystem</b>
+      </div>
+      <div class="sources-rail">
+        <a class="source-chip" href="https://polygon.technology/" target="_blank" rel="nofollow noopener noreferrer">
+          <span class="source-logo"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain=polygon.technology" width="22" height="22" loading="lazy" alt="Polygon" onerror="this.remove()"></span>
+          <span>Polygon</span>
+        </a>
+        <a class="source-chip" href="https://polygonscan.com/" target="_blank" rel="nofollow noopener noreferrer">
+          <span class="source-logo"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain=polygonscan.com" width="22" height="22" loading="lazy" alt="PolygonScan" onerror="this.remove()"></span>
+          <span>PolygonScan</span>
+        </a>
+        <a class="source-chip" href="https://l2beat.com/" target="_blank" rel="nofollow noopener noreferrer">
+          <span class="source-logo"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain=l2beat.com" width="22" height="22" loading="lazy" alt="L2BEAT" onerror="this.remove()"></span>
+          <span>L2BEAT</span>
+        </a>
+        <a class="source-chip" href="https://defillama.com/" target="_blank" rel="nofollow noopener noreferrer">
+          <span class="source-logo"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain=defillama.com" width="22" height="22" loading="lazy" alt="DefiLlama" onerror="this.remove()"></span>
+          <span>DefiLlama</span>
+        </a>
+        <a class="source-chip" href="https://www.coingecko.com/" target="_blank" rel="nofollow noopener noreferrer">
+          <span class="source-logo"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain=coingecko.com" width="22" height="22" loading="lazy" alt="CoinGecko" onerror="this.remove()"></span>
+          <span>CoinGecko</span>
+        </a>
+        <a class="source-chip" href="https://etherscan.io/" target="_blank" rel="nofollow noopener noreferrer">
+          <span class="source-logo"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain=etherscan.io" width="22" height="22" loading="lazy" alt="Etherscan" onerror="this.remove()"></span>
+          <span>Etherscan</span>
+        </a>
+        <a class="source-chip" href="https://chainlist.org/" target="_blank" rel="nofollow noopener noreferrer">
+          <span class="source-logo"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain=chainlist.org" width="22" height="22" loading="lazy" alt="Chainlist" onerror="this.remove()"></span>
+          <span>Chainlist</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p><b>Polygon Bridge</b> &mdash; 2026</p>
+    </footer>
+  </main>
 
   <script>
   (function(){
     "use strict";
     var button = document.querySelector("[data-switch]");
-    if (!button) return;
+    var route = document.querySelector("[data-route]");
+    if (!button || !route) return;
 
     button.addEventListener("click", function(){
-      var chips = document.querySelectorAll(".leg .chip");
-      if (chips.length < 2) return;
-
-      var first = chips[0].innerHTML;
-      chips[0].innerHTML = chips[1].innerHTML;
-      chips[1].innerHTML = first;
+      route.classList.toggle("is-reversed");
+      var assets = route.querySelectorAll(".asset");
+      if (assets.length !== 2) return;
+      var first = assets[0].innerHTML;
+      assets[0].innerHTML = assets[1].innerHTML;
+      assets[1].innerHTML = first;
     });
   })();
   </script>
