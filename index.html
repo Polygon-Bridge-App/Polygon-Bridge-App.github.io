@@ -16,7 +16,7 @@
   <meta name="twitter:description" content="How the Polygon Bridge works: the PoS deposit contract, checkpoint-based withdrawals, POL gas, and the zkEVM/AggLayer routes you can use instead. A complete how-to for self-custody transfers.">
   <meta name="twitter:image" content="https://polygon-bridge-app.github.io/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend:wght@500;600;700&display=swap">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://polygon-bridge-app.github.io/#website", "url": "https://polygon-bridge-app.github.io/", "name": "Polygon Bridge — Move Assets from Ethereum to Polygon"}, {"@type": "WebPage", "@id": "https://polygon-bridge-app.github.io/#webpage", "url": "https://polygon-bridge-app.github.io/", "name": "Polygon Bridge — Move Assets from Ethereum to Polygon", "isPartOf": {"@id": "https://polygon-bridge-app.github.io/#website"}, "description": "How the Polygon Bridge works: the PoS deposit contract, checkpoint-based withdrawals, POL gas, and the zkEVM/AggLayer routes you can use instead. A complete how-to for self-custody transfers.", "datePublished": "2026-10-09", "dateModified": "2026-10-09"}, {"@type": "SoftwareApplication", "name": "Polygon Bridge", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://polygon-bridge-app.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Bridges"}, {"@type": "ListItem", "position": 3, "name": "Polygon Bridge"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the Polygon Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "It's the contract system that locks an asset on Ethereum and mints or releases its equivalent on Polygon. A deposit credits your Polygon wallet within minutes; a withdrawal settles on Ethereum only after the relevant Polygon block is included in a checkpoint."}}, {"@type": "Question", "name": "How long does a Polygon Bridge deposit take?", "acceptedAnswer": {"@type": "Answer", "text": "Typically around 20 to 30 minutes after your Ethereum transaction confirms, since the deposit needs to be picked up by the state sync process before it appears on Polygon."}}, {"@type": "Question", "name": "Why does a Polygon Bridge withdrawal take longer than a deposit?", "acceptedAnswer": {"@type": "Answer", "text": "Withdrawals can only be claimed on Ethereum once the Polygon block that burned the asset is covered by a checkpoint, and checkpoints are submitted on a fixed interval rather than continuously, which stretches the wait to hours."}}, {"@type": "Question", "name": "Do I need POL to use Polygon after bridging?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Transactions on Polygon pay gas in POL, the renamed MATIC. Bridge a small amount of POL with your main asset, or swap for it on a Polygon exchange right after your deposit lands, or your new balance will sit unusable."}}, {"@type": "Question", "name": "Is the Polygon Bridge different from Polygon zkEVM's bridge?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The PoS bridge relies on periodic checkpoints for withdrawals, while the Polygon zkEVM bridge verifies a validity proof instead. They are separate contracts connecting separate networks, both reachable from Ethereum."}}, {"@type": "Question", "name": "What does AggLayer add to the Polygon Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "AggLayer lets assets move between different Polygon chains by aggregating their proofs at a shared settlement layer, aiming to avoid a full Ethereum round trip on every hop between those chains."}}, {"@type": "Question", "name": "Can I use a third-party bridge instead of the canonical Polygon Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and it can finish a withdrawal faster because it fronts liquidity rather than waiting on a checkpoint. That speed comes with an added fee and an added party to trust, so check its reputation and quoted amount before choosing it over the canonical route."}}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://polygon-bridge-app.github.io/#website", "url": "https://polygon-bridge-app.github.io/", "name": "Polygon Bridge — Move Assets from Ethereum to Polygon"}, {"@type": "WebPage", "@id": "https://polygon-bridge-app.github.io/#webpage", "url": "https://polygon-bridge-app.github.io/", "name": "Polygon Bridge — Move Assets from Ethereum to Polygon", "isPartOf": {"@id": "https://polygon-bridge-app.github.io/#website"}, "description": "How the Polygon Bridge works: the PoS deposit contract, checkpoint-based withdrawals, POL gas, and the zkEVM/AggLayer routes you can use instead. A complete how-to for self-custody transfers.", "datePublished": "2026-10-10", "dateModified": "2026-10-10"}, {"@type": "SoftwareApplication", "name": "Polygon Bridge", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://polygon-bridge-app.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Bridges"}, {"@type": "ListItem", "position": 3, "name": "Polygon Bridge"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the Polygon Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "It's the contract system that locks an asset on Ethereum and mints or releases its equivalent on Polygon. A deposit credits your Polygon wallet within minutes; a withdrawal settles on Ethereum only after the relevant Polygon block is included in a checkpoint."}}, {"@type": "Question", "name": "How long does a Polygon Bridge deposit take?", "acceptedAnswer": {"@type": "Answer", "text": "Typically around 20 to 30 minutes after your Ethereum transaction confirms, since the deposit needs to be picked up by the state sync process before it appears on Polygon."}}, {"@type": "Question", "name": "Why does a Polygon Bridge withdrawal take longer than a deposit?", "acceptedAnswer": {"@type": "Answer", "text": "Withdrawals can only be claimed on Ethereum once the Polygon block that burned the asset is covered by a checkpoint, and checkpoints are submitted on a fixed interval rather than continuously, which stretches the wait to hours."}}, {"@type": "Question", "name": "Do I need POL to use Polygon after bridging?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Transactions on Polygon pay gas in POL, the renamed MATIC. Bridge a small amount of POL with your main asset, or swap for it on a Polygon exchange right after your deposit lands, or your new balance will sit unusable."}}, {"@type": "Question", "name": "Is the Polygon Bridge different from Polygon zkEVM's bridge?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The PoS bridge relies on periodic checkpoints for withdrawals, while the Polygon zkEVM bridge verifies a validity proof instead. They are separate contracts connecting separate networks, both reachable from Ethereum."}}, {"@type": "Question", "name": "What does AggLayer add to the Polygon Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "AggLayer lets assets move between different Polygon chains by aggregating their proofs at a shared settlement layer, aiming to avoid a full Ethereum round trip on every hop between those chains."}}, {"@type": "Question", "name": "Can I use a third-party bridge instead of the canonical Polygon Bridge?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and it can finish a withdrawal faster because it fronts liquidity rather than waiting on a checkpoint. That speed comes with an added fee and an added party to trust, so check its reputation and quoted amount before choosing it over the canonical route."}}]}]}</script>
   <style>
     :root{--bg:#0B0F16;--surface:#151D27;--text:#E8EEF7;--muted:#8795A7;--accent:#8B5CF6;--accent-ink:#140A24;--radius:13px;--display:"Lexend";--body:"Inter"}
     * { box-sizing: border-box; }
@@ -43,23 +43,23 @@
     .c1b9aac { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 52px; padding: .85rem 1.4rem; border: 1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent); border-radius: var(--radius); background: linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--text))); color: var(--accent-ink); font: 650 .95rem/1.3 var(--body); text-decoration: none; box-shadow: 0 6px 18px color-mix(in srgb,var(--accent) 17%,transparent); transition: transform .18s ease, box-shadow .18s ease; }
     .c1b9aac:hover { transform: translateY(-2px); box-shadow: 0 9px 24px color-mix(in srgb,var(--accent) 25%,transparent); }
     .c4275b1 .c1b9aac { min-height: 42px; padding: .65rem 1rem; }
-    .c1ed714 { padding-block: 1.8rem 0; color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
+    .c1ed714 { padding-block: 1rem 0; color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
     .c3c691d { color: var(--muted); }
     .c3c691d a, a.c3c691d { color: var(--muted); text-decoration: none; }
     .c3c691d a:hover, a.c3c691d:hover { color: var(--accent); text-decoration: underline; }
     .c3c691d ol, .c3c691d ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; margin: 0; list-style: none; }
-    .c76aefb { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(2rem,6vw,5.5rem); align-items: center; padding-block: 3rem 5.5rem; }
+    .c76aefb { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(2rem,5vw,4.5rem); align-items: start; padding-block: 1.5rem 3rem; }
     .cb4d548 { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1.3rem; color: var(--accent); font-size: .86rem; font-weight: 600; }
     .cb4d548::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 9%,transparent); }
     h1 { margin-bottom: 1.4rem; font-size: clamp(2.5rem,4.7vw,4.35rem); font-weight: 600; letter-spacing: -.055em; overflow-wrap: anywhere; }
     h1 em { color: var(--accent); font-style: normal; }
     .c1605b3 { max-width: 48ch; margin-bottom: 2rem; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
-    .c6d0f5f { position: relative; min-width: 0; padding: clamp(1.25rem,3vw,2rem); border: 1px solid color-mix(in srgb,var(--accent) 20%,var(--surface)); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(155deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 40%); box-shadow: 0 24px 64px color-mix(in srgb,var(--text) 9%,transparent),0 4px 12px color-mix(in srgb,var(--accent) 6%,transparent); }
-    .cc9346e { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: 1.6rem; }
+    .c6d0f5f { position: relative; min-width: 0; padding: clamp(1.1rem,2.4vw,1.5rem); border: 1px solid color-mix(in srgb,var(--accent) 20%,var(--surface)); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(155deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 40%); box-shadow: 0 24px 64px color-mix(in srgb,var(--text) 9%,transparent),0 4px 12px color-mix(in srgb,var(--accent) 6%,transparent); }
+    .cc9346e { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: 1rem; }
     .cc9346e h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.035em; }
     .c937091 { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .65rem; border: 1px solid color-mix(in srgb,var(--accent) 16%,transparent); border-radius: 999px; background: color-mix(in srgb,var(--accent) 8%,var(--surface)); color: var(--accent); font-size: .72rem; font-weight: 600; }
     .c937091::before { content: ""; width: .35rem; height: .35rem; border-radius: 50%; background: var(--accent); }
-    .c1dba9b { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .8rem; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid color-mix(in srgb,var(--text) 9%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .c1dba9b { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .8rem; padding: .8rem; margin-bottom: 1rem; border: 1px solid color-mix(in srgb,var(--text) 9%,transparent); border-radius: var(--radius); background: var(--surface); }
     .c66c49d { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
     .c66c49d:last-child { align-items: flex-end; }
     .c636a9d, .cc41755 { color: var(--muted); font-size: .78rem; font-weight: 500; }
@@ -70,21 +70,21 @@
     .cc41755 { display: block; margin-bottom: .5rem; color: var(--text); }
     .cda90aa { display: flex; align-items: center; gap: .75rem; padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 18%,transparent); border-radius: var(--radius); background: var(--bg); transition: border-color .18s ease; }
     .cda90aa:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent); }
-    .cda90aa input { width: 100%; min-width: 0; padding: .2rem 0; border: 0; background: var(--bg); color: var(--text); font: 550 1.9rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
+    .cda90aa input { width: 100%; min-width: 0; padding: .2rem 0; border: 0; background: var(--bg); color: var(--text); font: 550 1.6rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
     .cda90aa input:focus { outline: 0; }
     .ca4bd64 { color: var(--muted); font-size: .8rem; }
-    .c47d3d6 { margin: .55rem 0 1.3rem; color: var(--muted); font-size: .74rem; }
+    .c47d3d6 { margin: .45rem 0 .85rem; color: var(--muted); font-size: .74rem; }
     .cc63905 { margin: .5rem 0; color: var(--text); font-size: .8rem; font-weight: 600; }
     [hidden] { display: none !important; }
-    .c218534 { padding: 1.2rem; border-radius: var(--radius); background: linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 4%,var(--surface))); }
+    .c218534 { padding: 1rem; border-radius: var(--radius); background: linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 4%,var(--surface))); }
     .cfbf0b7 { margin-bottom: .25rem; color: var(--muted); font-size: .8rem; }
     .c99311c { display: block; color: var(--text); font: 600 clamp(1.7rem,3vw,2.5rem)/1.3 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
     .c99311c small { color: var(--muted); font: 400 .8rem/1.4 var(--body); letter-spacing: 0; }
-    .c218534 dl { display: grid; gap: .6rem; margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .8rem; }
+    .c218534 dl { display: grid; gap: .5rem; margin: .8rem 0 0; padding-top: .8rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .8rem; }
     .c218534 dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; }
     .c218534 dt { color: var(--muted); }
     .c218534 dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
-    .cb06bf9 { margin-block: 1rem; color: var(--muted); font-size: .75rem; }
+    .cb06bf9 { margin-block: .7rem; color: var(--muted); font-size: .75rem; }
     .cb06bf9 summary { width: fit-content; color: var(--text); cursor: pointer; }
     .cb06bf9 p { margin: .65rem 0 0; }
     .c6d0f5f > .c1b9aac { width: 100%; }
@@ -145,7 +145,7 @@
       <div class="ca9c09e">
         <a href="#facts">Key facts</a>
         <a href="#sources">Sources</a>
-        <a class="c1b9aac" href="dashboard/">Open app</a>
+        <a class="c1b9aac" href="dashboard/">Bridge</a>
       </div>
     </nav>
   </header>
@@ -156,7 +156,7 @@
         <p class="cb4d548">Plan your transfer</p>
         <h1 id="hero-title">Polygon <em>Bridge</em>.</h1>
         <p class="c1605b3"><strong>The Polygon Bridge is the set of smart contracts that lets you deposit an asset on Ethereum and receive its equivalent on Polygon</strong>, and withdraw it back again later. A deposit calls the bridge's lock contract on Ethereum and is reflected on Polygon within minutes; a withdrawal starts on Polygon but only settles on Ethereum once that transaction is included in a periodic checkpoint. Everything moves through contracts you can read before you sign, and your asset sits in your own wallet on both ends.</p>
-        <a class="c1b9aac" href="dashboard/">Open app <svg class="c1120ab" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <a class="c1b9aac" href="dashboard/">Bridge <svg class="c1120ab" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
       </div>
       <aside class="c6d0f5f" aria-labelledby="widget-title">
         <div class="cc9346e">
@@ -188,7 +188,7 @@
           <p>Fee = 0.25 units + 0.3% of the amount, rounded to two decimal places and capped at the amount sent. The remaining amount uses the same units, at a 1:1 conversion. Time starts at 2 minutes, adds 1 minute per 2,500 units or part thereof, and is capped at 12 minutes. The displayed range adds 2 minutes to that estimate.</p>
         </details>
         <noscript><p class="c47d3d6">Enable JavaScript to calculate the estimate.</p></noscript>
-        <a class="c1b9aac" href="dashboard/">Continue to dashboard <svg class="c1120ab" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <a class="c1b9aac" href="dashboard/">Bridge <svg class="c1120ab" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
       </aside>
     </section>
     <section class="ccf5ec6" id="facts" aria-labelledby="facts-title">
@@ -226,7 +226,7 @@
   </section>
   <footer class="cfa010d">
     <div class="cdd0289 cd0e83f">
-      <p>Updated Oct 09, 2026</p>
+      <p>Updated Oct 10, 2026</p>
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>
